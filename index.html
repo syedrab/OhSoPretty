@@ -271,8 +271,89 @@
 
     textarea { min-height: 120px; resize: vertical; }
 
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      z-index: 100;
+    }
+
+    .hamburger span {
+      width: 25px;
+      height: 2px;
+      background: #fff;
+      transition: all 0.3s ease;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+    }
+
     @media (max-width: 900px) {
-      .nav-links { display: none; }
+      .nav {
+        padding: 8px 4vw;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+      }
+
+      .nav img {
+        width: 180px;
+        margin: -20px 0;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .hamburger span {
+        background: var(--ink);
+        box-shadow: none;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(12px);
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-links.active {
+        max-height: 300px;
+      }
+
+      .nav-links a {
+        color: var(--ink);
+        text-shadow: none;
+        padding: 16px 6vw;
+        border-bottom: 1px solid rgba(232, 217, 213, 0.5);
+        font-size: 12px;
+      }
+
+      .nav-links a:hover {
+        background: rgba(215, 164, 180, 0.1);
+      }
     }
 
     .footer {
@@ -359,6 +440,11 @@
   <header class="hero">
     <nav class="nav">
       <img src="/oh_so_pretty_studio_original.png" alt="Oh So Pretty Studio" />
+      <button class="hamburger" onclick="this.classList.toggle('active');this.nextElementSibling.classList.toggle('active')">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
       <div class="nav-links">
         <a href="/services">Services</a>
         <a href="/services">Book Online</a>
