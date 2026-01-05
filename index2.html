@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Oh So Pretty Studio - Hero Concept</title>
+  <style>
+    :root {
+      --rose: #d7a4b4;
+      --ink: #bfb5b2;
+      --ink-soft: rgba(191, 181, 178, 0.85);
+      --display: "Garamond", "Palatino Linotype", "Book Antiqua", serif;
+      --sans: "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--sans);
+      color: #1f171a;
+      background: #ffffff;
+    }
+
+    .hero {
+      min-height: 100vh;
+      background: url("/ohsopretty_model2.png");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 22px 6vw;
+      font-size: 13px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ink);
+    }
+
+    .nav img {
+      width: 120px;
+      height: auto;
+      filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.25));
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--ink);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 6px;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: currentColor;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after { width: 100%; }
+
+    .hero-content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 0 6vw 10vh;
+    }
+
+    .hero-text {
+      max-width: 520px;
+      color: var(--ink);
+    }
+
+    .hero-kicker {
+      font-size: 14px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+
+    .hero-title {
+      font-family: var(--display);
+      font-size: clamp(44px, 7vw, 84px);
+      line-height: 0.95;
+      margin: 0 0 22px;
+      font-weight: 400;
+    }
+
+    .hero-sub {
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--ink);
+      margin: 0 0 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 26px;
+      border-radius: 999px;
+      border: 1px solid rgba(248, 243, 241, 0.7);
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgba(248, 243, 241, 0.12);
+    }
+
+    .section {
+      padding: 90px 8vw;
+    }
+
+    .section--muted {
+      background: #f5efed;
+    }
+
+    .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: #8f5a6a;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(28px, 4vw, 46px);
+      margin: 18px 0 20px;
+      font-weight: 400;
+    }
+
+    .lead {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #5f4a54;
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 28px;
+    }
+
+    .panel {
+      background: #fff;
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid #e8d9d5;
+      box-shadow: 0 22px 38px rgba(42, 28, 34, 0.12);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .timeline-step {
+      padding: 18px 22px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid #e8d9d5;
+    }
+
+    .timeline-step strong {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #8f5a6a;
+      margin-bottom: 6px;
+    }
+
+    .testimonial-grid {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-top: 32px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid #e8d9d5;
+      box-shadow: 0 18px 30px rgba(42, 28, 34, 0.06);
+    }
+
+    .contact {
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: start;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid #e8d9d5;
+      font-size: 15px;
+      font-family: var(--sans);
+      background: #fff;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <img src="/oh_so_pretty_studio_medium.png" alt="Oh So Pretty Studio" />
+      <div class="nav-links">
+        <a href="/services">Treatments</a>
+        <a href="/services">Book Online</a>
+        <a href="/faq">FAQ</a>
+        <a href="/about-me">About</a>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-kicker">Oh So Pretty Studio</div>
+        <h1 class="hero-title">Express your self</h1>
+        <p class="hero-sub">Soft, refined brows in a calm, private studio. Ombre and nano techniques tailored to your natural beauty.</p>
+        <a class="btn" href="/services">Book now</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="section">
+    <span class="eyebrow">The Experience</span>
+    <h2 class="section-title">Beauty that feels intentional, never rushed.</h2>
+    <p class="lead">Your appointment is built around a slow, thoughtful ritual. We take time to listen, map, and refine so the final result looks softly balanced and beautifully refined.</p>
+    <div class="grid">
+      <div class="panel">
+        <h3>Personalized mapping</h3>
+        <p>Every brow begins with careful symmetry and design tailored to your facial features and natural growth.</p>
+      </div>
+      <div class="panel">
+        <h3>Artistry with intention</h3>
+        <p>Ombre offers a polished gradient, while nano creates hair-like texture for a natural finish.</p>
+      </div>
+      <div class="panel">
+        <h3>Comfort-first pacing</h3>
+        <p>The studio experience is calm, private, and never hurried from consultation to final reveal.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <span class="eyebrow">Signature Services</span>
+    <h2 class="section-title">Choose the finish that fits your style.</h2>
+    <div class="grid">
+      <div class="panel">
+        <h3>Ombre Brows (Powder)</h3>
+        <p>A soft, shaded gradient that creates a makeup-inspired finish with a lighter front and deeper tail.</p>
+      </div>
+      <div class="panel">
+        <h3>Nano Brows</h3>
+        <p>Hyper-realistic hair strokes for a natural, textured look that mimics real brow hairs.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <span class="eyebrow">The Ritual</span>
+    <h2 class="section-title">A four-step experience from consultation to aftercare.</h2>
+    <p class="lead">We guide you through each phase with clarity and care so you feel confident at every step.</p>
+    <div class="timeline">
+      <div class="timeline-step">
+        <strong>01 Consultation</strong>
+        We learn your style, routine, and goals before creating a tailored brow plan.
+      </div>
+      <div class="timeline-step">
+        <strong>02 Mapping</strong>
+        Custom design and shape mapping ensure balance and harmony with your features.
+      </div>
+      <div class="timeline-step">
+        <strong>03 Artistry</strong>
+        Ombre shading or nano strokes are applied for a polished, natural finish.
+      </div>
+      <div class="timeline-step">
+        <strong>04 Aftercare</strong>
+        You leave with clear guidance and support for a smooth, beautiful healing process.
+      </div>
+    </div>
+  </section>
+
+  <section id="testimonials" class="section section--muted">
+    <span class="eyebrow">Testimonials</span>
+    <h2 class="section-title">Words from clients who love their brows.</h2>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <h3>"The most natural brow work I have ever had."</h3>
+        <p>The studio is so calming, and the shape is exactly what I imagined. My brows look soft and refined.</p>
+      </div>
+      <div class="testimonial-card">
+        <h3>"The hair strokes look unbelievably real."</h3>
+        <p>I wanted texture without makeup and Tasha delivered. The strokes blend perfectly with my natural brows.</p>
+      </div>
+      <div class="testimonial-card">
+        <h3>"A true luxury experience."</h3>
+        <p>Every detail felt intentional. The consultation was thorough and the results are beautifully subtle.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--muted">
+    <div class="contact">
+      <div>
+        <span class="eyebrow">Consultation</span>
+        <h2 class="section-title">Request your appointment.</h2>
+        <p class="lead">Share your preferred dates and brow goals. We will respond with availability and a personalized plan.</p>
+      </div>
+      <form>
+        <input type="text" name="name" placeholder="Your name" />
+        <input type="email" name="email" placeholder="Email address" />
+        <input type="text" name="timing" placeholder="Preferred dates or times" />
+        <textarea name="message" placeholder="Tell us about your brow goals"></textarea>
+        <button class="btn" type="submit">Send request</button>
+      </form>
+    </div>
+  </section>
+</body>
+</html>
