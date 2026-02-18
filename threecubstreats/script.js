@@ -65,22 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     startHeroCarousel();
   }
 
-  // --- Menu Tabs ---
-  const tabs = document.querySelectorAll('.menu-tab');
-  const panels = document.querySelectorAll('.menu-panel');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.tab;
-
-      tabs.forEach(t => t.classList.remove('active'));
-      panels.forEach(p => p.classList.remove('active'));
-
-      tab.classList.add('active');
-      document.getElementById(`panel-${target}`).classList.add('active');
-    });
-  });
-
   // --- Gallery Carousel ---
   const galleryCarousel = document.getElementById('galleryCarousel');
   const prevBtn = document.getElementById('galleryPrev');
